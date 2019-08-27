@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+html {
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei",
+		"Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+	/* 1 */
+	-ms-text-size-adjust: 100%; /* 2 */
+	-webkit-text-size-adjust: 100%; /* 2 */
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	   
+}
+
+.login {
+	box-shadow: 0px 0px 15px #ccc;;
+	box-sizing: border-box;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 425px;
+	height: 325px;
+	margin: auto;
+	background-color: #FFFFFF;
+}
+
+.login-box {
+	padding: 20px;
+}
+
+.login-box-header{
+	
+	
+	text-align: center;
+}
+
+.login-jump{
+	
+	float: right;
+}
+
+.login-link{
+	    color: #029789!important;
+}
+
+@media screen and (max-width:768px) {
+	.login{width:300px;}
+		
+	
+	
+	
+	}

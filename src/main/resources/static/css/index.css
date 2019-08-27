@@ -1,0 +1,70 @@
+.icon-circle {
+
+    width: 68px;
+    height: 68px;
+    text-align: center;
+    border-radius: 34px;
+    float: left;
+}
+
+
+
+.icon-circle i {
+
+    left: 31px;
+    color: #fff;
+    font-size: 36px;
+    position: absolute;
+    top: 30px;
+}
+
+
+
+.right-text-content {
+    padding-left: 78px;
+}
+
+p {
+
+
+    margin-bottom: 10px;
+}
+
+p cite {
+    color: #999;
+    font-style: normal;
+    font-size: 15px;
+}
+.bg-1{
+
+    background-color: #f8bb74;
+}.bg-2{
+
+     background-color: #86d2ee;
+ }
+.bg-3{
+
+    background-color: #94e0e1;;
+}
+
+
+
+
+
+p span{
+    color: #9F9F9F;
+}
+
+p span.color-1 {
+    color: #f8bb74;
+    font-size: 28px;
+}
+
+p span.color-2 {
+    color:#86d2ee;
+    font-size: 28px;
+}
+p span.color-3 {
+    color:#94e0e1;
+    font-size: 28px;
+}

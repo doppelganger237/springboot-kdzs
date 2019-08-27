@@ -1,0 +1,236 @@
+html {
+
+    background-color: #f2f2f2;
+}
+
+.layui-body{
+
+
+}
+
+
+
+.layui-side-scroll {
+    overflow: hidden;
+    width: 100%;
+}
+
+.layui-nav-tree {
+    width: 100%;
+    padding: 0;
+}
+
+.layui-logo {
+
+    width: 100%;
+    line-height: 50px;
+    background-color: #2b2d36;
+    color: #fff;
+    position: relative;
+    left: 0;
+    top: 0;
+    height: 50px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.layui-logo cite {
+    font-style: normal
+}
+
+.layui-header {
+    border-bottom: 1px solid #f6f6f6;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+/* 顶部导航栏 */
+.layui-header .layui-nav {
+    background: 0 0;
+}
+
+.layui-header .layui-nav a, .layui-header .layui-nav a cite,
+.layui-header .layui-nav a:hover {
+    color: #333;
+}
+
+.layui-body {
+    top: 60px;
+    left: 230px;
+}
+
+.layui-body .layui-nav-left {
+    padding: 0 10px;
+    left: 0;
+}
+
+.layui-header .layui-nav .layui-nav-item .layui-nav-more {
+    border-top-color: #666;
+}
+
+.layui-header .layui-nav .layui-nav-mored {
+    border-color: transparent transparent #666 !important;
+}
+
+.layui-header .layui-nav .layui-nav-mored, .layui-nav-itemed > a .layui-nav-more {
+    margin-top: -9px;
+    border-style: dashed dashed solid;
+    border-color: transparent transparent #fff;
+}
+
+.layui-nav .layui-nav-item cite {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    margin-top: -22px;
+}
+
+.layui-layout-left {
+    left: 220px;
+}
+.hide-side .layui-layout-left {
+    left: 60px;
+}
+
+
+/* 顶部导航栏结束 */
+
+/* 侧边导航栏 */
+.layui-side {
+    width: 230px;
+    background-color: #20222A;
+    z-index: 1001;
+}
+
+/*兼容pc缩进菜单*/
+
+.layui-body , .layui-layout-left{
+    transition: all .3s;
+    -webkit-transition: all .3s;
+
+}
+.layui-side{
+
+    transition: all .3s;
+    -webkit-transition: all .3s;
+}
+
+.layui-body.hide-side .layui-body{
+    left: 0;
+    transform: translate3d(220px,0,0);
+    -webkit-transform: translate3d(220px,0,0);/*
+    transition: left .3s;
+    overflow: auto;*/
+
+}
+
+.layui-layout-body.hide-side .layui-nav .layui-nav-item > a > .layui-icon {
+    font-size: 18px;
+    transition: font-size .3s;
+    -webkit-transition: font-size .3s;
+}
+
+
+
+.layui-layout-body.hide-side .layui-body{
+
+
+    left: 60px;
+}
+.layui-layout-body.hide-side .layui-nav-left .layui-nav-item cite,
+.layui-layout-body.hide-side .layui-side .layui-nav .layui-nav-itemed .layui-nav-child
+{
+
+    display: none;
+}
+
+.layui-layout-body.hide-side .layui-side .layui-nav>.layui-nav-item>a .layui-nav-more{
+
+
+    display: none;
+    padding: 8px 0;
+    width: 200px;
+
+}
+
+
+.layui-layout-body.hide-side .layui-side{
+
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+@media screen and (min-width: 750px) {
+
+    .layui-layout-body.hide-side .layui-side{
+        width: 60px;
+    }
+
+}
+
+
+
+@media (max-width: 750px) {
+    .layui-layout-body.hide-side .layui-body{
+
+        left: 0;
+        transform: translate3d(220px,0,0);
+        -webkit-transform: translate3d(220px,0,0);
+    }
+    .layui-layout-body.hide-side .layui-layout-left{
+
+        left: 0;
+        transform: translate3d(220px,0,0);
+        -webkit-transform: translate3d(220px,0,0);
+    }  .layui-layout-body.hide-side .layui-layout-right{
+
+           transform: translate3d(220px,0,0);
+           -webkit-transform: translate3d(220px,0,0);
+       }
+    .layui-layout-left{
+
+        left: 0;
+    }
+
+    .layui-side {
+        transform: translate3d(-220px,0,0);
+        -webkit-transform: translate3d(-220px,0,0);
+        width: 220px;
+    }
+    .layui-layout-body .layui-body{
+        left: 0px;
+    }
+
+    .layui-layout-body .layui-nav-left .layui-nav-item cite,
+    .layui-layout-body .layui-side .layui-nav .layui-nav-itemed .layui-nav-child
+    {
+
+        display: none;
+    }
+
+  /*  .layui-layout-body.hide-side .layui-side{
+        width: 230px;
+    }*/
+/*    .layui-layout-body.hide-side .layui-body{
+        left: 230px;
+    }*/
+    .layui-layout-body.hide-side .layui-nav-left .layui-nav-item cite,
+    .layui-layout-body.hide-side .layui-side .layui-nav .layui-nav-itemed .layui-nav-child
+    {
+
+        display: block;
+    }
+
+
+}
+
+/* 侧边导航栏结束 */
+
+
+.layui-fluid {
+    padding: 15px;
+}

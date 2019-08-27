@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhang.kdzs.deliver.mapper.LogisticsMapper">
+
+    <resultMap id="baseJobMap" type="com.zhang.kdzs.deliver.entity.LogisticsJob">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="weight" column="weight"/>
+        <result property="volume" column="volume" typeHandler="com.zhang.kdzs.deliver.mybatis.JsonTypeHandler"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="status" column="status"/>
+        <result property="from" column="from"/>
+        <result property="destination" column="destination"/>
+        <result property="useCompanyId" column="use_company_id" typeHandler="com.zhang.kdzs.deliver.mybatis.JsonTypeHandler"/>
+    </resultMap>
+
+    <resultMap id="resultJobMap" type="com.zhang.kdzs.deliver.entity.LogisticsJob" extends="baseJobMap">
+
+        <collection property="results" ofType="com.zhang.kdzs.deliver.entity.LogisticsResult" column="job_id">
+            <id property="id" column="result_id"/>
+            <result property="jobId" column="job_id"/>
+            <result property="name" column="name"/>
+            <result property="parentId" column="parent_id"/>
+            <result property="price" column="price"/>
+
+        </collection>
+
+    </resultMap>
+    <update id="updateJob">
+
+         UPDATE tb_jobs SET
+         user_id = #{userId},
+         weight = #{weight},
+         volume = #{volume,typeHandler=com.zhang.kdzs.deliver.mybatis.JsonTypeHandler},
+         start_time = #{startTime},
+         end_time = now(),
+         status = #{status},
+         `from` = #{from},
+         destination = #{destination}
+         where id = #{id}
+
+
+    </update>
+
+
+    <delete id="deleteJobById">
+
+		delete from tb_jobs where id = #{id}
+
+	</delete>
+
+    <select id="getJobById"
+            resultMap="resultJobMap">
+
+SELECT j.*,r.* from tb_jobs j LEFT JOIN tb_results r on j.id = r.job_id where j.id = #{id}
+
+
+    </select>
+
+    <select id="getJobsByUserId"
+            resultMap="resultJobMap">
+SELECT j.*,r.* from tb_jobs j LEFT JOIN tb_results r on j.id = r.job_id where j.user_id = #{id}
+
+    </select>
+
+
+    <select id="getJobsByUserIdTable"
+            resultMap="resultJobMap">
+
+
+select j.*,r.* from tb_jobs j , tb_results r where j.id = r.job_id and j.user_id = #{id} order by j.id desc limit #{page},#{limit}
+
+    </select>
+
+    <select id="getCompanyById" resultType="com.zhang.kdzs.deliver.entity.LogisticsCompany">
+
+		select id,name from tb_companys where id = #{id} limit 0,1
+
+	</select>
+
+    <select id="getCompanies" resultType="com.zhang.kdzs.deliver.entity.LogisticsCompany">
+		select id,name from tb_companys
+	</select>
+
+
+    <insert id="addJob" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+		tb_jobs(user_id,weight,volume,start_time,end_time,status,`from`,destination,use_company_id)
+		VALUES
+		(
+			#{userId},
+			#{weight},
+			#{volume,typeHandler=com.zhang.kdzs.deliver.mybatis.JsonTypeHandler},
+			#{startTime},
+			#{endTime},
+			#{status},
+			#{from},
+			#{destination},
+            #{useCompanyId, typeHandler=com.zhang.kdzs.deliver.mybatis.JsonTypeHandler}
+
+
+		)
+	</insert>
+
+    <insert id="addResult" useGeneratedKeys="true" keyProperty="result_id">
+
+        INSERT INTO
+        tb_results(job_id,`name`,parent_name,price)
+        VALUES (
+            #{jobId},
+            #{name},
+            #{parentName},
+            #{price}
+        )
+
+    </insert>
+    <insert id="addResultList">
+
+        INSERT INTO
+        tb_results(job_id,`name`,parent_id,price)
+        VALUES
+        <foreach collection="list" item="item" separator=",">(
+            #{item.jobId},
+            #{item.name},
+            #{item.parentId},
+            #{item.price})
+        </foreach>
+
+
+    </insert>
+
+
+    <!-- <insert id="saveJob" useGeneratedKeys="true" keyProperty="id">
+         REPLACE INTO
+         tb_jobs(user_id,weight,start_time,end_time,status,`from`,destination)
+         VALUES
+         (
+             #{userId},
+             #{weight},
+             #{startTime},
+             #{endTime},
+             #{status},
+             #{from},
+             #{destination}
+
+         )
+     </insert>-->
+
+    <!-- <insert id="saveResults">
+         REPLACE INTO
+         tb_results(job_id,`name`,parent_id,price)
+         VALUES
+         <foreach collection="list" item="item"  separator="," >(
+             #{item.jobId},
+             #{item.name},
+             #{item.parentId},
+             #{item.price}
+             )
+         </foreach>
+
+     </insert>-->
+
+</mapper>

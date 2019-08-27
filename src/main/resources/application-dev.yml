@@ -1,0 +1,39 @@
+server:
+  port: 80
+
+  tomcat:
+    uri-encoding: UTF-8
+
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/study?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.jdbc.Driver
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    suffix: .html
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    cache: false
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.zhang.kdzs.system.entity,com.zhang.kdzs.deliver.entity
+  configuration:
+    # 使用jdbc的getGeneratedKeys 可以获取数据库自增主键值
+    use-generated-keys: true
+    # 使用列别名替换列名，默认true。如：select name as title from table
+    use-column-label: true
+    # 开启驼峰命名转换，如：Table(create_time) -> Entity(createTime)。不需要我们关心怎么进行字段匹配，mybatis会自动识别`大写字母与下划线`
+    map-underscore-to-camel-case: true
+
+
+  #logging:
+ # level:
+  #  com.zhang.kdzs: DEBUG
+
+
